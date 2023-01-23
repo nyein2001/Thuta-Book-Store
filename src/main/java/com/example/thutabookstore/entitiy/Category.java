@@ -1,6 +1,8 @@
 package com.example.thutabookstore.entitiy;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +14,8 @@ import java.util.List;
 @Setter
 public class Category extends IdClass {
     @Column(name = "category_name")
+    @NotBlank(message = "Name cannot be blank")
+    @NotEmpty(message = "Name cannot be empty")
     private String categoryName;
     @OneToMany(mappedBy = "category")
     private List<Book> bookList = new ArrayList<>();
