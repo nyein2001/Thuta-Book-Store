@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="layout/masterLayout :: layout(~{:: main})" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Category List</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Category Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="cat : ${categories}">
+                                <th th:text="${cat.id}"></th>
+                                <th th:text="${cat.categoryName}"></th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a th:href="@{/admin/category-form}" class="btn btn-primary btn-block btn-lg">
+                            New Category
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

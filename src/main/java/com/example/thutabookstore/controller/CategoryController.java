@@ -3,7 +3,6 @@ package com.example.thutabookstore.controller;
 import com.example.thutabookstore.dao.CategoryDao;
 import com.example.thutabookstore.entitiy.Category;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
