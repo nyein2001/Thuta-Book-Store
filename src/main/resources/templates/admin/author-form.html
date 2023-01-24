@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="layout/masterLayout :: layout(~{:: main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<main role="main">
+</main>
+<main role="main">
+    <div class="container my-5 bg-light">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Author Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" th:action="@{/admin/author-form}" th:object="${author}" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" th:classappend="${#fields.hasErrors('name')}"
+                                       th:field="*{name}" class="form-control">
+                                <small class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                                       th:errors="*{name}"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" name="dob" id="dob" th:field="*{dateOfBirth}" class="form-control">
+                            </div>
+                            <div class="from-group">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="gen" class="form-check-input" th:field="*{gender}"
+                                           th:value="${'MALE'}">
+                                    <label class="from-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="gen" class="form-check-input" th:field="*{gender}"
+                                           th:value="${'FEMALE'}">
+                                    <label class="from-check-label">Male</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="streetName">Street Name</label>
+                                <input type="text" name="streetName" id="streetName"
+                                       th:classappend="${#fields.hasErrors('address.streetName')} ? 'is-invalid'"
+                                       th:field="*{address.streetName}" class="form-control">
+                                <small class="invalid-feedback" th:if="${#fields.hasErrors('address.streetName')}"
+                                       th:errors="*{address.streetName}"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" name="phoneNumber" id="phoneNumber"
+                                       th:classappend="${#fields.hasErrors('address.phoneNumber')} ? 'is-invalid'"
+                                       th:field="*{address.phoneNumber}" class="form-control">
+                                <small class="invalid-feedback" th:if="${#fields.hasErrors('address.phoneNumber')}"
+                                       th:errors="*{address.phoneNumber}"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" name="country" id="country"
+                                       th:classappend="${#fields.hasErrors('address.country')} ? 'is-invalid'"
+                                       th:field="*{address.country}" class="form-control">
+                                <small class="invalid-feedback" th:if="${#fields.hasErrors('address.country')}"
+                                       th:errors="*{address.country}"></small>
+                            </div>
+                            <input type="submit" value="Save Author" class="btn btn-primary btn-lg">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
