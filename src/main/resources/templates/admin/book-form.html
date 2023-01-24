@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="layout/masterLayout :: layout(~{:: main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<main role="main">
+</main>
+<main role="main">
+    <div class="container my-5 bg-light">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Book Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/book-form}" th:object="${book}" method="post">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" th:field="*{title}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="yearPublished">Year Published</label>
+                                <input type="date" th:field="*{yearPublished}" name="yearPublished" id="yearPublished"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="publisher">Publisher</label>
+                                <input type="text" name="publisher" id="publisher" th:field="*{publisher}"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="price">Price</label>
+                                <input type="number" name="price" id="price" th:field="*{price}"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" name="quantity" id="quantity" th:field="*{quantity}"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="genre">Genre</label>
+                                <input type="text" name="genre" id="genre" th:field="*{genre}"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="imageUrl">Image Url</label>
+                                <input type="text" name="imageUrl" id="imageUrl" th:field="*{imageUrl}"
+                                       class="form-control">
+                            </div>
+                            <div class="form-control">
+                                <label for="description">Description</label>
+                                <input type="text" name="description" id="description" th:field="*{description}"
+                                       class="form-control">
+                            </div>
+                            <div class="from-group">
+                                <label for="author">Author</label>
+                                <select class="form-control" name="author" id="author" th:field="*{author.id}">
+                                    <option th:each="au : ${authors}" th:text="${au.name}"
+                                            th:value="${au.id}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" id="category" class="form-control" th:field="*{category.id}">
+                                    <option th:each="cat : ${categories}" th:text="${cat.categoryName}"
+                                            th:value="${cat.id}"></option>
+                                </select>
+                            </div>
+                            <input type="submit" value="Save Book" class="btn btn-primary btn-lg">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
