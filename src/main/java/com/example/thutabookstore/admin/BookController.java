@@ -1,4 +1,4 @@
-package com.example.thutabookstore.controller;
+package com.example.thutabookstore.admin;
 
 import com.example.thutabookstore.dao.AuthorDao;
 import com.example.thutabookstore.dao.BookDao;
