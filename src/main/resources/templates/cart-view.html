@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="layout/userViewLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main>
+    <div class="container my-4 bg-light">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ca :  ${carts}">
+                <td th:text="${ca.id}"></td>
+                <td th:text="${ca.title}"></td>
+                <td th:text="${ca.author.name}"></td>
+                <td th:text="${'$' + ca.price}"></td>
+                <td><a th:href="@{'/cart/delete?id='+${ca.id}}" class="btn btn-outline-danger">DELETE</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="" class="btn btn-outline-primary">CheckOut</a>
+                <a th:href="@{/user/book/all}" class="btn btn-outline-secondary" >Continue Shopping</a>
+                <a href="" class="btn btn-outline-info">Clear Cart</a>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
