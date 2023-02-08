@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html th:replace="layout/userViewLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Register Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/cart/register}" th:object="${customer}" method="post">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" th:field="*{username}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" th:field="*{password}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="streetName">Street Name</label>
+                                <input type="text" id="streetName" th:field="*{address.streetName}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNo">Phone Number</label>
+                                <input type="text" id="phoneNo" th:field="*{address.phoneNumber}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" th:field="*{address.country}" class="form-control">
+                            </div>
+                            <input type="submit" value="Save" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

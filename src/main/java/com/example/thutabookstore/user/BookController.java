@@ -6,6 +6,7 @@ import com.example.thutabookstore.entitiy.Book;
 import com.example.thutabookstore.service.CartService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +35,21 @@ public class BookController {
         books = bookDao.findAll();
     }
 
+    @GetMapping("/own-library")
+    public String showAllUserBooks(Authentication authentication, Model model) {
+        if (authentication != null) {
+            String name = authentication.getName();
+            model.addAttribute("name", name);
+            model.addAttribute("books", cartService.listOrderBookByUserName(name));
+        } else {
+            throw new RuntimeException("Not Login Error");
+        }
+        return "user/own-library";
+    }
+
     @GetMapping("/book/all")
     public String listAllBook(Model model, @ModelAttribute("booksAll") List<Book> books) {
+        System.out.println(books);
         model.addAttribute("books", books);
         return "user/show-all-books";
     }

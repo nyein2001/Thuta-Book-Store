@@ -5,14 +5,14 @@ import com.example.thutabookstore.entitiy.Category;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
 
 @Getter
 @Setter
-@ToString
-@AllArgsConstructor
 public class BookDto {
-
     private int id;
     private String title;
     private LocalDate yearPublished;
@@ -20,23 +20,52 @@ public class BookDto {
     private double price;
     private int quantity;
     private String genre;
-    private String imageUrl;
+    private String imgUrl;
     private String description;
     private Category category;
-    private Author author;
+    private int orderBookQuantity;
 
-    public BookDto() {
+    private List<Integer> itemList=
+            new ArrayList<>();
+    private Author author;
+    public BookDto(){}
+
+    public BookDto(int id, String title, LocalDate yearPublished, String publisher, double price, int quantity, String genre, String imgUrl, String description, Category category, Author author) {
+        this.id = id;
+        this.title = title;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+        this.price = price;
+        this.quantity = quantity;
+        this.genre = genre;
+        this.imgUrl = imgUrl;
+        this.description = description;
+        this.category = category;
+        this.author = author;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof BookDto bookDto)) return false;
-        return getId() == bookDto.getId() && Double.compare(bookDto.getPrice(), getPrice()) == 0 && getQuantity() == bookDto.getQuantity() && getTitle().equals(bookDto.getTitle()) && getYearPublished().equals(bookDto.getYearPublished()) && getPublisher().equals(bookDto.getPublisher()) && getGenre().equals(bookDto.getGenre()) && getImageUrl().equals(bookDto.getImageUrl()) && getDescription().equals(bookDto.getDescription()) && getCategory().equals(bookDto.getCategory()) && getAuthor().equals(bookDto.getAuthor());
+        return id == bookDto.id && title.equals(bookDto.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getYearPublished(), getPublisher(), getPrice(), getQuantity(), getGenre(), getImageUrl(), getDescription(), getCategory(), getAuthor());
+        return Objects.hash(id, title);
+    }
+
+    @Override
+    public String toString() {
+        return "BookDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", yearPublished=" + yearPublished +
+                ", publisher='" + publisher + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", orderBookQuantity="+ orderBookQuantity +
+                '}';
     }
 }

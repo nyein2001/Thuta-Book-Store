@@ -12,21 +12,8 @@ import java.util.List;
 @Controller
 public class StartController {
 
-    @Autowired
-    private BookDao bookDao;
-
-    @GetMapping("/admin/")
-    public String startAction() {
-        return "redirect:/admin/book/all";
-    }
-
-    @GetMapping(value = {"/","/index"})
-    public String index(){
-        return "index";
-    }
-
-    @ModelAttribute("books")
-    public List<Book> listBooks() {
-        return bookDao.findAll();
+    @GetMapping(value = {"/admin",})
+    public String layoutTest(){
+        return "forward:/admin/book/all";
     }
 }
